@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strony internetowe dla restauracji | Kacper</title>
+<meta name="description" content="Projektuję strony dla restauracji, pizzerii i piekarni: menu online, rezerwacje, widoczność w Google. Zapytaj o wycenę.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F2; --surface:#FFFFFF; --ink:#13271F; --muted:#4F625A; --line:#D3DDD6;
+  --green:#0F3D33; --on-green:#F2F5F2; --accent:#F0A81C; --on-accent:#1A1405;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0D1A16;--surface:#14251F;--ink:#EAF1EE;--muted:#9DB1A8;--line:#27403A;--green:#1B5C4C;--on-green:#F2F5F2}
+}
+:root[data-theme="dark"]{--bg:#0D1A16;--surface:#14251F;--ink:#EAF1EE;--muted:#9DB1A8;--line:#27403A;--green:#1B5C4C;--on-green:#F2F5F2}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+section{padding:72px 0}
+h2{font-size:clamp(28px,5vw,42px);font-weight:800;margin-bottom:14px}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 34px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:14px 22px;border-radius:10px;background:var(--accent);color:var(--on-accent);border:2px solid var(--accent)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+header.top b{font:800 20px "Bricolage Grotesque",sans-serif}
+header.top a{text-decoration:none;font-weight:600}
+
+/* hero */
+.hero{background:var(--green);color:var(--on-green);padding-bottom:0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-bottom:64px}
+.hero h1{font-size:clamp(38px,7vw,68px);font-weight:800;margin:36px 0 18px}
+.hero p{font-size:19px;max-width:44ch;margin:0 0 28px;opacity:.9}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.menu{background:#FBF8F0;color:#1F1A10;border-radius:14px;padding:28px 26px;transform:rotate(1.4deg);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.menu h3{font-size:24px;text-align:center;margin-bottom:4px}
+.menu small{display:block;text-align:center;color:#6b6250;margin-bottom:18px}
+.menu li{list-style:none;display:flex;align-items:baseline;gap:8px;padding:7px 0;font-weight:500}
+.menu li::after{content:"";order:2;flex:1;border-bottom:2px dotted #b8ae94;transform:translateY(-4px)}
+.menu li span{order:1}
+.menu li em{order:3;font-style:normal;font-weight:700}
+.menu ul{margin:0;padding:0}
+
+/* benefits */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.three h3{font-size:21px;margin-bottom:8px}
+.three p{margin:0;color:var(--muted)}
+
+/* portfolio */
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:block}
+.card:hover{border-color:var(--accent)}
+.shot{height:170px;background:var(--green);color:var(--on-green);padding:14px 16px}
+.shot i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--on-green);opacity:.5;margin-right:5px}
+.shot .url{display:block;margin-top:14px;background:rgba(255,255,255,.14);border-radius:6px;padding:7px 10px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot .big{display:block;font:800 26px "Bricolage Grotesque",sans-serif;margin-top:18px}
+.card .txt{padding:18px 20px 22px}
+.card h3{font-size:21px;margin-bottom:4px}
+.card p{margin:0 0 10px;color:var(--muted)}
+.card strong{font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* packages */
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.pack{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column}
+.pack.main{border:2px solid var(--accent)}
+.pack h3{font-size:24px}
+.price{font:800 32px "Bricolage Grotesque",sans-serif;margin:10px 0 14px}
+.price small{font:500 15px Figtree,sans-serif;color:var(--muted)}
+.pack ul{margin:0 0 22px;padding-left:20px;color:var(--muted);flex:1}
+.pack li{margin-bottom:6px}
+.pack .btn{text-align:center}
+.note{color:var(--muted);margin-top:22px;font-size:15px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--accent);padding-top:14px}
+.steps li::before{content:counter(s);font:800 28px "Bricolage Grotesque",sans-serif;display:block;margin-bottom:6px}
+.steps b{display:block;font-size:18px;margin-bottom:4px}
+.steps span{color:var(--muted);font-size:16px}
+
+/* about + contact */
+.about{max-width:62ch}
+.contact{background:var(--green);color:var(--on-green)}
+.contact h2{margin-bottom:10px}
+.contact p{max-width:52ch;opacity:.9;margin:0 0 26px}
+.contact .btn.ghost{border-color:var(--on-green)}
+footer{padding:22px 0 30px;color:var(--muted);font-size:14px}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .menu{transform:none}
+  .three,.work,.packs{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  section{padding:54px 0}
+}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap" style="display:block;padding-bottom:0">
+    <header class="top"><b>Kacper</b><a href="#kontakt">Kontakt</a></header>
+  </div>
+  <div class="wrap">
+    <div>
+      <h1>Strony internetowe dla restauracji</h1>
+      <p>Goście sprawdzają w telefonie menu, godziny i dojazd, zanim wybiorą miejsce. Robię strony, które to pokazują od razu i prowadzą do rezerwacji.</p>
+      <div class="cta">
+        <a class="btn" href="#kontakt">Zapytaj o wycenę</a>
+        <a class="btn ghost" href="#realizacje">Zobacz realizacje</a>
+      </div>
+    </div>
+    <aside class="menu" aria-label="Co zawiera strona">
+      <h3>Twoja strona zawiera</h3>
+      <small>w każdym pakiecie</small>
+      <ul>
+        <li><span>Menu online</span><em>jest</em></li>
+        <li><span>Godziny i mapa dojazdu</span><em>jest</em></li>
+        <li><span>Przycisk „zadzwoń”</span><em>jest</em></li>
+        <li><span>Wersja na telefon</span><em>jest</em></li>
+        <li><span>Wizytówka Google</span><em>jest</em></li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Co zyskuje restauracja</h2>
+    <p class="lead">Strona ma jedno zadanie: zamienić osobę, która szuka miejsca na obiad, w gościa przy stoliku.</p>
+    <div class="three">
+      <div><h3>Więcej telefonów i rezerwacji</h3><p>Numer i przycisk rezerwacji są widoczne od pierwszego ekranu, bez szukania.</p></div>
+      <div><h3>Menu, które łatwo zmienić</h3><p>Nowa karta albo ceny to kilka minut, a nie wysyłanie PDF-a do grafika.</p></div>
+      <div><h3>Widoczność w Google</h3><p>Strona połączona z Mapami Google, dzięki czemu lokalni goście znajdują Cię szybciej.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="realizacje" style="background:var(--surface)">
+  <div class="wrap">
+    <h2>Zrealizowane strony</h2>
+    <p class="lead">Dwie działające strony lokali gastronomicznych. Kliknij, żeby zobaczyć je na żywo.</p>
+    <div class="work">
+      <a class="card" href="https://piekarnia-cukiernia-zabczy-scy.vercel.app/" target="_blank" rel="noopener">
+        <div class="shot"><i></i><i></i><i></i><span class="url">piekarnia-cukiernia-zabczy-scy.vercel.app</span><span class="big">Piekarnia i cukiernia Żabczy-scy</span></div>
+        <div class="txt"><h3>Piekarnia i cukiernia</h3><p>Strona lokalnej piekarni z ofertą wypieków i ciast.</p><strong>Otwórz stronę</strong></div>
+      </a>
+      <a class="card" href="https://doughpizza.doughpizza.workers.dev/" target="_blank" rel="noopener">
+        <div class="shot"><i></i><i></i><i></i><span class="url">doughpizza.doughpizza.workers.dev</span><span class="big">Dough Pizza</span></div>
+        <div class="txt"><h3>Pizzeria Dough Pizza</h3><p>Strona pizzerii z menu i danymi kontaktowymi.</p><strong>Otwórz stronę</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="cennik">
+  <div class="wrap">
+    <h2>Pakiety i ceny</h2>
+    <p class="lead">Cena jest znana przed startem. Bez ukrytych dopłat.</p>
+    <div class="packs">
+      <div class="pack">
+        <h3>Start</h3>
+        <div class="price">od 990 zł</div>
+        <ul><li>strona jednostronicowa</li><li>menu, godziny, mapa</li><li>wersja na telefon</li><li>domena i publikacja</li></ul>
+        <a class="btn ghost" href="#kontakt">Wybieram Start</a>
+      </div>
+      <div class="pack main">
+        <h3>Standard</h3>
+        <div class="price">od 1 490 zł</div>
+        <ul><li>wszystko ze Startu</li><li>galeria zdjęć</li><li>Wizytówka Google</li><li>panel do zmiany menu</li></ul>
+        <a class="btn" href="#kontakt">Wybieram Standard</a>
+      </div>
+      <div class="pack">
+        <h3>Rezerwacje</h3>
+        <div class="price">od 2 200 zł</div>
+        <ul><li>wszystko ze Standardu</li><li>rezerwacja stolika online</li><li>zamówienia na wynos</li><li>pierwsze poprawki w cenie</li></ul>
+        <a class="btn ghost" href="#kontakt">Wybieram Rezerwacje</a>
+      </div>
+    </div>
+    <p class="note">Dokładną cenę podam po krótkiej rozmowie o Twoim lokalu.</p>
+    <p class="note"><b>Opłaty miesięczne:</b> poza ceną strony płaci się miesięcznie za domenę, hosting i zamówienia online. Dokładne kwoty podaję w wycenie.</p>
+  </div>
+</section>
+
+<section style="background:var(--surface)">
+  <div class="wrap">
+    <h2>Jak wygląda współpraca</h2>
+    <p class="lead">Cztery kroki. Strona gotowa zwykle w 7-14 dni.</p>
+    <ol class="steps">
+      <li><b>Rozmowa</b><span>Ustalamy, czego potrzebuje Twoja restauracja.</span></li>
+      <li><b>Projekt</b><span>Dostajesz wygląd strony do oceny.</span></li>
+      <li><b>Poprawki</b><span>Wprowadzam uwagi, aż będzie dobrze.</span></li>
+      <li><b>Publikacja</b><span>Strona idzie na żywo, a Ty wiesz, jak ją edytować.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <h2>Cześć, jestem Kacper</h2>
+    <p>Jestem grafikiem i tworzę strony internetowe dla lokali gastronomicznych. Projektuję je tak, żeby goście szybko znaleźli menu, godziny i kontakt, a właściciel mógł sam zmieniać treści. Pracuję bezpośrednio z Tobą, bez pośredników.</p>
+  </div>
+</section>
+
+<section id="kontakt" class="contact">
+  <div class="wrap">
+    <h2>Zapytaj o wycenę</h2>
+    <p>Napisz albo zadzwoń. Odpowiem i powiem, ile będzie kosztować strona dla Twojej restauracji.</p>
+    <div class="cta">
+      <a class="btn" href="tel:+48783028762">Zadzwoń: 783 028 762</a>
+      <a class="btn ghost" href="mailto:grafikos@interia.pl?subject=Wycena%20strony%20dla%20restauracji">grafikos@interia.pl</a>
+      <a class="btn ghost" href="https://www.instagram.com/grafikstron/" target="_blank" rel="noopener">Instagram @grafikstron</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Kacper, strony internetowe dla restauracji</div></footer>
+</body>
+</html>
